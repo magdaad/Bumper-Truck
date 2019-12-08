@@ -1,5 +1,11 @@
+body{
+    margin:0;
+}
+
 .container{
     overflow: hidden;
+    background: deepskyblue;
+    height: 100vh;
 }
 
 .truck{
@@ -8,6 +14,7 @@
     animation-fill-mode: forwards;
     left: 0;
     bottom: 0;
+    z-index: 2;
 }
 
 
@@ -94,19 +101,22 @@
     width: 180px;
     height: 80px;
     background-color: red;
-    bottom: 65px;
+    bottom: 70px;
     animation: unload 10s;
+    animation-timing-function: linear;
     animation-delay: 10s;
 }
 
 .pakaOpen{
     position: absolute;
     width: 10px;
-    height: 75px;
+    height: 80px;
     background-color: red;
     /*bottom: 65px;*/
     animation: unloadOpen 10s;
     animation-delay: 10s;
+    animation-timing-function: linear;
+
 }
 
 .paka:before{
@@ -133,18 +143,35 @@
     border-left: 20px solid red;
 }
 
+.pakaLoad{
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    background-color: blue;
+    bottom: 70px;
+    left: 0px;
+    animation: pakaOut 10s;
+    animation-delay: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform-origin: bottom left;
+    z-index: 4;
+}
+
 .podnosnik{
     position: absolute;
     width: 5px;
     height: 0px;
     background-color: black;
     bottom: 67px;
-    left: 175px;
-    transform: scaleY(1) rotate(-30deg) ;
+    left: 130px;
+    transform: scaleY(1) rotate(0deg) ;
     transform-origin: bottom;
-    animation: podnies 10s;
+    animation: lift 10s;
     animation-delay: 10s;
     z-index: -1;
+    animation-timing-function: linear;
+
 }
 
 
@@ -215,7 +242,7 @@
 }
 
 .rightWheel{
-    left: 80px;
+    left: 73px;
 }
 
 .leftWheel2{
@@ -227,7 +254,7 @@
 .truckPlatform{
     position: absolute;
     width: 205px;
-    height: 3px;
+    height: 5px;
     background-color: black;
     bottom: 65px;
 }
@@ -244,7 +271,7 @@
 
 .road{
     width: 100%;
-    height: 20px;
+    height: 9vh;
     position: absolute;
     bottom: 0px;
     left: 0;
@@ -252,20 +279,7 @@
 }
 
 
-.pakaLoad{
-    position: absolute;
-    width: 50px;
-    height: 30px;
-    background-color: black;
-    bottom: 68px;
-    left: 0px;
-    animation: pakaOut 5s;
-    animation-delay: 10s;
-    /*border-radius: 50%;*/
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
-    z-index: 4;
-}
+
 
 
 
@@ -300,30 +314,59 @@
 
 @keyframes pakaOut {
     0% {
-        bottom: 68px;
+        bottom: 70px;
         left: 0px;
         transform-origin: bottom left;
         transform: rotate(0deg);
     }
-    10% {
-        bottom: 68px;
+    20% {
+        bottom: 70px;
         left: 0px;
         transform-origin: bottom left;
-        transform: rotate(-4deg);
+        transform: rotate(-18deg);
+        background-color:green;
+
+    }
+    25% {
+        bottom: 70px;
+        left: 0px;
+        background-color:green;
+    }
+    30% {
+        bottom: 62px;
+        left: -16px;
+        background-color:green;
+    }
+    31% {
+
+        background-color:yellow;
+    }
+    35% {
+        bottom: 47px;
+        left: -39px;
+        transform-origin: bottom left;
+        background-color: yellow;
+    }
+    39%{
+        background-color: indigo;
+    }
+    40%{
+        transform: rotate(-36deg);
+    }
+    42%{
+        bottom: 20px;
+        left: -55px;
+        transform-origin: bottom left;
+        background-color: indigo;
     }
     50%{
-        bottom: 55px;
-        left: -20px;
-        transform-origin: bottom left;
-        transform: rotate(-45deg);
-    }
-    75%{
-        bottom: 20px;
-        left: -90px;
+        transform: rotate(0deg);
+        background-color: indigo;
+
     }
     100%{
         bottom: 20px;
-        left: -90px;
+        left: -55px;
     }
 }
 
@@ -352,42 +395,56 @@
     0%{
         transform-origin: top left;
         transform: rotate(0);
+        /*animation-timing-function: ease-out;*/
+    }
+    40%{
+        transform-origin: top left;
+        transform: rotate(60deg);
+        /*animation-timing-function: ease-in;*/
     }
     50%{
         transform-origin: top left;
-        transform: rotate(75deg);
+        transform: rotate(52deg);
+        /*animation-timing-function: ease-out;*/
     }
     60%{
         transform-origin: top left;
-        transform: rotate(75deg);
+        transform: rotate(60deg);
+        /*animation-timing-function: ease-in;*/
     }
     100%{
         transform-origin: top left;
         transform: rotate(0deg);
+        /*animation-timing-function: ease;*/
     }
 }
 
-@keyframes podnies {
+@keyframes lift {
 
     0%{
-        /*transform: scaleY(1) rotate(-14deg);*/
-        height: 0;
-        transform-origin: bottom;
+        /*transform: scaleY(1) rotate(0deg);*/
+        height: 10px;
+        transform-origin: bottom left;
+    }
+    40%{
+        /*transform: scaleY(1) rotate(-22deg) ;*/
+        transform-origin: bottom left;
+        height: 150px
     }
     50%{
-        /*transform: scaleY(5) rotate(-45deg);*/
-        transform-origin: bottom;
+        transform: scaleY(1) rotate(-22deg) ;
+        transform-origin: bottom left;
         height: 150px
     }
     60%{
-        /*transform: scaleY(5) rotate(-45deg);*/
-        transform-origin: bottom;
+        transform: scaleY(1) rotate(-22deg) ;
+        transform-origin: bottom left;
         height: 150px
     }
     100%{
-        /*transform: scaleY(1) rotate(-14deg);*/
-        height: 0;
-        transform-origin: bottom;
+        /*transform: scaleY(1) rotate(-90deg) ;*/
+        height: 10px;
+        transform-origin: bottom left;
     }
 }
 
